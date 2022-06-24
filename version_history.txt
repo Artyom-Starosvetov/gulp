@@ -1,0 +1,36 @@
+06.06.2022
+- Separate file plugins.js with plugin imports turned out to be inconvenient:
+1) the necessararity to append every plugin call with app.plugins.[plugin];
+2) the usage of every plugin group is not clear because there is no link with specific tasks.
+Поэтому принято решение перенести необходимые импорты в отдельные задачи. Файл plugins.js содержит только универсальные плагины.
+- Добавлена задача parseImages, доработана задача parsePug для отображения webp изображений.
+
+07.06.2022
+- Added plugin gulp-vars to process CSS variables on IE. CSS variables have advantage over SASS and Less variables and is preferred when changing color-themes (см. https://codyhouse.co/blog/post/css-custom-properties-vs-sass-variables).
+- Maintask in the gulpfile.js was broken into several task blocks. Reason: it is not necessary to launch font tasks and dist/ reset task every time the gulp is launched.
+
+08.06.2022
+- Added separate tasks for operations on almost every file type.
+
+09.06.2022
+- Added csscomb plugin and lesscomb task.
+
+20.06.2022
+- Fixed path.pug.src to include index.pug only. Now one can use pug includes.
+
+23.06.2022
+- parsePug is splitted into gulp.series(parsePug, parseHTML). HTML files are free to use.
+- parseLess/SCSS is splitted into gulp.series(parseLess/SCSS, parseCSS). CSS files are free to use.
+- Changed application dir to app/. Now gulp, node_modules and application are separated.
+- All imports from plugins are handled by plugins.js.
+
+24.06.2022
+- Added {"allowEmpty": true} option for parse tasks.
+- Bugfixes.
+
+TODO: $
+TODO: make task to validate html with notify.
+TODO: $complete Skillbox course.
+TODO: maintain to git.
+TODO: divide zeroing.less into normalize.less + zeroing.less
+TODO: $gulp for multiply projects.
