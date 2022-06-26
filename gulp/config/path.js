@@ -10,7 +10,7 @@ export const path = {
     src: `${srcFolder}/html/*.html`,
     all: `${srcFolder}/*.html`,
     dir: `${srcFolder}/html/`,
-    dest: `${buildFolder}/`
+    dest: `${buildFolder}/html/`
   },
   pug: {
     src: `${srcFolder}/pug/*.pug`,

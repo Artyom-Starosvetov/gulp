@@ -6,9 +6,8 @@ export const parseCSS = () => {
         message: "Error: <%= error.message %>"
       })
     ))
-    .pipe(app.plugins.replace(
-      /@img\//g, '../img/'
-    ))
+    // Фикс переменной для папки картинок
+    .pipe(app.plugins.replace(/@img\//g, '../img/'))
     .pipe(app.plugins.groupMediaQueries())
     .pipe(app.plugins.webpcss(
       {

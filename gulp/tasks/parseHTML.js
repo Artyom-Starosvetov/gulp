@@ -10,7 +10,7 @@ export const parseHTML = () => {
     // Сбор шаблонов .html в единый файл страницы
     .pipe(app.plugins.fileInclude())
     // Фикс переменной для папки картинок
-    .pipe(app.plugins.replace(/@img\//g, 'img/'))
+    .pipe(app.plugins.replace(/@img\//g, '../img/'))
     // Работа с картинками .svg -> .webp
     // .pipe(app.plugins.webpHtmlNosvg())
     // Управление версиями, добавление даты и времени к названиям, чтобы кэш браузера не мешал отображать изменения
