@@ -1,4 +1,4 @@
-import webp from "gulp-webp";
+// import webp from "gulp-webp";
 import imagemin from "gulp-imagemin";
 
 export const parseImages = () => {
@@ -10,7 +10,7 @@ export const parseImages = () => {
       })
     ))
     .pipe(app.plugins.newer(app.path.images.dest))
-    .pipe(webp())
+    // .pipe(webp())
     .pipe(app.gulp.dest(app.path.images.dest))
     .pipe(app.gulp.src(app.path.images.src))
     .pipe(imagemin({

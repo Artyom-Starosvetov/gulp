@@ -25,12 +25,17 @@
 - All imports from plugins are handled by plugins.js.
 
 24.06.2022
+- Project pushed to the git!
 - Added {"allowEmpty": true} option for parse tasks.
 - Bugfixes.
 
+26.06.2022
+- Fixed watcher behavior on parsing.
+- Gulpfile was optimized.
+
+27.06.2022
+- Fixed parseLess and parseScss tasks.
+
 TODO: $
-TODO: make task to validate html with notify.
-TODO: $complete Skillbox course.
-TODO: maintain to git.
-TODO: divide zeroing.less into normalize.less + zeroing.less
+TODO: $make task to validate html with notify.
 TODO: $gulp for multiply projects.

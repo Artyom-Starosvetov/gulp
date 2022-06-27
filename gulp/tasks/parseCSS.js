@@ -1,5 +1,5 @@
 export const parseCSS = () => {
-  return app.gulp.src(app.path.css.src, { soursemaps: false, "allowEmpty": true })
+  return app.gulp.src(app.path.css.src, { soursemaps: false })
     .pipe(app.plugins.plumber(app.plugins.notify.onError(
       {
         title: "CSS",
@@ -9,12 +9,13 @@ export const parseCSS = () => {
     // Фикс переменной для папки картинок
     .pipe(app.plugins.replace(/@img\//g, '../img/'))
     .pipe(app.plugins.groupMediaQueries())
-    .pipe(app.plugins.webpcss(
-      {
-        webpClass: ".webp",
-        noWebpClass: ".no-webp"
-      }
-    ))
+    // .pipe(app.plugins.webpcss(
+    //   {
+    //     webpClass: ".webp",
+    //     noWebpClass: ".no-webp"
+    //   }
+    // ))
+    // .pipe(app.plugins.csscomb())
     .pipe(app.plugins.autoPrefixer(
       {
         grid: true,
@@ -22,11 +23,10 @@ export const parseCSS = () => {
         cascade: true
       }
     ))
-    .pipe(app.plugins.vars())
-    .pipe(app.plugins.beautify.css({
-      indent_size: 2
-    }))
-    .pipe(app.plugins.csscomb())
+    // .pipe(app.plugins.vars())
+    // .pipe(app.plugins.beautify.css({
+    //   indent_size: 2
+    // }))
     .pipe(app.gulp.dest(app.path.css.dest))
     .pipe(app.plugins.cleanCss())
     .pipe(app.plugins.rename(

@@ -36,23 +36,24 @@ const pugTasks = gulp.series(parsePug, parseHTML);
 const lessTasks = gulp.series(parseLess, parseCSS);
 const scssTasks = gulp.series(parseSCSS, parseCSS);
 const fontsTasks = gulp.series(otf2ttf, ttf2woff, fontStyle);
-const parseTasks = gulp.parallel(parseJS, pugTasks, lessTasks, scssTasks, parseImages);
+const parseTasks = gulp.series(parseJS, pugTasks, lessTasks, scssTasks, parseImages);
 
 const outTasks = gulp.parallel(watcher, server);
 const buildTasks = gulp.series(copyLibs, fontsTasks, parseTasks, outTasks);
 const rebuildTasks = gulp.series(reset, buildTasks);
 
 gulp.task('reset', reset);
-gulp.task('copyLibs', copyLibs);
 
 gulp.task('parse', parseTasks);
 gulp.task('parseJs', parseJS);
 gulp.task('parsePug', pugTasks);
 gulp.task('parseHtml', parseHTML);
-gulp.task('parseLess', parseLess);
+gulp.task('parseLess', lessTasks);
+gulp.task('parseScss', scssTasks);
 gulp.task('parseCss', parseCSS);
 gulp.task('parseImages', parseImages);
 gulp.task('parseFonts', fontsTasks);
+gulp.task('copyLibs', copyLibs);
 
 gulp.task('html2pugg', html2pugg);
 gulp.task('groupMedia', groupMediaQuires);
@@ -64,10 +65,10 @@ gulp.task('rebuild', rebuildTasks);
 
 // Наблюдатель за изменениями в файлах
 function watcher() {
-  gulp.watch(path.watch.pug, pugTasks);
+  gulp.watch(path.watch.pug, parsePug);
   gulp.watch(path.watch.html, parseHTML);
-  gulp.watch(path.watch.less, lessTasks);
-  gulp.watch(path.watch.scss, scssTasks);
+  gulp.watch(path.watch.less, parseLess);
+  gulp.watch(path.watch.scss, parseSCSS);
   gulp.watch(path.watch.css, parseCSS);
   gulp.watch(path.watch.images, parseImages);
   gulp.watch(path.watch.js, parseJS);

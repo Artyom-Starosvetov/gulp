@@ -10,7 +10,7 @@ export const path = {
     src: `${srcFolder}/html/*.html`,
     all: `${srcFolder}/*.html`,
     dir: `${srcFolder}/html/`,
-    dest: `${buildFolder}/html/`
+    dest: `${buildFolder}/`
   },
   pug: {
     src: `${srcFolder}/pug/*.pug`,
@@ -18,17 +18,17 @@ export const path = {
     dest: `${srcFolder}/html/`
   },
   scss: {
-    src: `${srcFolder}/scss/style.scss`,
+    src: `${srcFolder}/scss/*.scss`,
     dest: `${srcFolder}/css/`
   },
   less: {
-    src: `${srcFolder}/less/style.less`,
+    src: `${srcFolder}/less/*.less`,
     dir: `${srcFolder}/less/`,
     bak: `${srcFolder}/less/bak/`,
     dest: `${srcFolder}/css/`
   },
   css: {
-    src: `${srcFolder}/css/style.css`,
+    src: `${srcFolder}/css/*.css`,
     dest: `${buildFolder}/css/`
   },
   images: {
