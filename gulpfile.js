@@ -35,7 +35,7 @@ import { copyLibs } from "./gulp/tasks/copyLibs.js";
 const pugTasks = gulp.series(parsePug, parseHTML);
 const lessTasks = gulp.series(parseLess, parseCSS);
 const scssTasks = gulp.series(parseSCSS, parseCSS);
-const fontsTasks = gulp.series(otf2ttf, ttf2woff, fontStyle);
+const fontsTasks = gulp.series(otf2ttf, ttf2woff);
 const parseTasks = gulp.series(parseJS, pugTasks, lessTasks, scssTasks, parseImages);
 
 const outTasks = gulp.parallel(watcher, server);
@@ -62,6 +62,19 @@ gulp.task('lesscomb', combTasks);
 gulp.task('out', outTasks);
 gulp.task('build', buildTasks);
 gulp.task('rebuild', rebuildTasks);
+
+gulp.task('autoprefixer', () => {
+  const autoprefixer = require('autoprefixer')
+  const sourcemaps = require('gulp-sourcemaps')
+  const postcss = require('gulp-postcss')
+
+  return gulp.src(app.path.css.src)
+    .pipe(sourcemaps.init())
+    .pipe(postcss([autoprefixer()]))
+    .pipe(sourcemaps.write('.'))
+    .pipe(app.gulp.dest(app.path.css.dest))
+    .pipe(app.plugins.browsersync.stream())
+})
 
 // Наблюдатель за изменениями в файлах
 function watcher() {

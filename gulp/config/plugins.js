@@ -19,6 +19,10 @@ import autoPrefixer from 'gulp-autoprefixer'; // Добавление вендо
 import groupMediaQueries from 'gulp-group-css-media-queries'; // Группировка медиа-запросов
 import webpcss from 'gulp-webpcss'; // Вывод WEBP изображений
 
+import postcss from 'gulp-postcss';
+import sourcemaps from 'gulp-sourcemaps';
+import postAutoprefixer from 'autoprefixer';
+
 import pug from "gulp-pug";
 // import webpHtmlNosvg from "gulp-webp-html-nosvg";
 // import htmlhint from "gulp-htmlhint"; // Проверка выходного HTML // ??? Как с этим работать
@@ -48,6 +52,10 @@ export const plugins = {
   groupMediaQueries,
   webpcss,
   vars,
+
+  postcss,
+  sourcemaps,
+  postAutoprefixer,
 
   pug,
   // webpHtmlNosvg,

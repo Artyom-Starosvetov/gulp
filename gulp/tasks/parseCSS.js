@@ -8,7 +8,7 @@ export const parseCSS = () => {
     ))
     // Фикс переменной для папки картинок
     .pipe(app.plugins.replace(/@img\//g, '../img/'))
-    .pipe(app.plugins.groupMediaQueries())
+    // .pipe(app.plugins.groupMediaQueries())
     // .pipe(app.plugins.webpcss(
     //   {
     //     webpClass: ".webp",
@@ -16,24 +16,27 @@ export const parseCSS = () => {
     //   }
     // ))
     // .pipe(app.plugins.csscomb())
-    .pipe(app.plugins.autoPrefixer(
-      {
-        grid: true,
-        overrideBrowserslist: [">0.05%"],
-        cascade: true
-      }
-    ))
+    // .pipe(app.plugins.autoPrefixer(
+    //   {
+    //     grid: true,
+    //     overrideBrowserslist: [">0.05%"],
+    //     cascade: true
+    //   }
+    // ))
     // .pipe(app.plugins.vars())
     // .pipe(app.plugins.beautify.css({
     //   indent_size: 2
     // }))
+    // .pipe(app.plugins.sourcemaps.init())
+    // .pipe(app.plugins.postcss[app.plugins.autoprefixer()])
+    // .pipe(app.plugins.sourcemaps.write('.'))
     .pipe(app.gulp.dest(app.path.css.dest))
-    .pipe(app.plugins.cleanCss())
-    .pipe(app.plugins.rename(
-      {
-        extname: ".min.css"
-      }
-    ))
-    .pipe(app.gulp.dest(app.path.css.dest))
+    // .pipe(app.plugins.cleanCss())
+    // .pipe(app.plugins.rename(
+    //   {
+    //     extname: ".min.css"
+    //   }
+    // ))
+    // .pipe(app.gulp.dest(app.path.css.dest))
     .pipe(app.plugins.browsersync.stream())
 }

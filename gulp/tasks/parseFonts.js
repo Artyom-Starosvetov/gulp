@@ -42,8 +42,8 @@ export const ttf2woff = () => {
 
 export const fontStyle = () => {
   // файл стилей подключения шрифтов
-  let fontsSCSSFile = `${app.path.srcFolder}/scss/_fonts.scss`;
-  let fontsLessFile = `${app.path.srcFolder}/less/_fonts.less`;
+  let fontsSCSSFile = `${app.path.srcFolder}/scss/_tech/_fonts.scss`;
+  let fontsLessFile = `${app.path.srcFolder}/less/)/_tech/_fonts.less`;
   // проверяем существуют ли файлы шрифтов
   fs.readdir(app.path.fonts.dest, function (err, fontsFiles) {
     if (fontsFiles) {
